@@ -60,12 +60,24 @@ router.post('/', async function (req, res) {
 
 // 更新
 router.put('/:postId', async function (req, res) {
-  res.json({})
+  const postId = Number(req.params.postId)
+  const { title, content } = req.body
+
+  const [result] = await db.query(
+    `UPDATE post SET title = '${title}', content = '${content}' WHERE id=${postId};`
+  )
+  console.log(result)
+
+  res.json({ status: 'success', data: null })
 })
 
 // 刪除
 router.delete('/:postId', async function (req, res) {
-  res.json({})
+  const postId = Number(req.params.postId)
+  const [result] = await db.query(`DELETE FROM post WHERE id=${postId};`)
+  console.log(result)
+
+  res.json({ status: 'success', data: null })
 })
 
 export default router
