@@ -17,9 +17,10 @@ router.get('/', async function (req, res) {
   // })
 
   // res.json({ status: 'success', data: posts })
-  const [rows] = await db.query(`SELECT * FROM post ;`)
-  console.log(rows)
-  res.json({ status: 'success', data: rows })
+  const [posts] = await db.query(`SELECT * FROM post ;`)
+  console.log(posts)
+  // 回應到客戶端
+  res.json({ status: 'success', data: { posts } })
 })
 
 //得到單筆的資料(動態路由要寫在後面)
