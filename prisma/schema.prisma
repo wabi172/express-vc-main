@@ -27,13 +27,9 @@ datasource db {
 // }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @map("title")
-  content   String   @db.Text
-  note      String?
-  published Boolean  @default(false)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String @db.Text
 }
 
 // https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
